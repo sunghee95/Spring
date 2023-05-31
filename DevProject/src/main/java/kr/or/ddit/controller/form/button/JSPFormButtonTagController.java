@@ -24,5 +24,6 @@ public class JSPFormButtonTagController {
 		log.info("registerFormButton01() 실행!");
 		model.addAttribute("member", new Member());
 		return "form/button/registerFormButton01";
+		
 	}
 }
