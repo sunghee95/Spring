@@ -23,7 +23,7 @@ public class JSPFormButtonTagController {
 	public String registerFormButton01(Model model) {
 		log.info("registerFormButton01() 실행!");
 		model.addAttribute("member", new Member());
-		return "form/button/registerFormButton01";
-		
+		return "form/button/registerFormButton01";		
 	}
+	
 }

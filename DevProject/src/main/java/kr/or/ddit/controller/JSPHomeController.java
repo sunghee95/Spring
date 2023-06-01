@@ -1,6 +1,19 @@
 package kr.or.ddit.controller;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.or.ddit.vo.Address;
+import kr.or.ddit.vo.Member;
 
 @Controller
 
@@ -10,7 +23,7 @@ public class JSPHomeController {
 	 * 
 	 * 1. 지시자
 	 * - 지시자(directive)는 JSP페이지에 대한 설정 정보를 지정할 때 사용한다
-	 * - JSP가 제공하는 지시자에는 page지시자, taglib지시자, include 지시자 세가지가 있따
+	 * - JSP가 제공하는 지시자에는 page지시자, taglib지시자, include 지시자 세가지가 있다
 	 * 
 	 *  	1) page지시자
 	 *  		- JSP 페이지에 대한 정보를 지정한다 
@@ -99,10 +112,113 @@ public class JSPHomeController {
 	 *   		 ||(or)     | 두 피 연산자 중 하나 또는 모두 true이면 bool true를 반환하고, 그렇지 않으면 false반환 
 	 *   		 !(not)     | 해당 피연산자의 의미를 반대로 바꿈
 	 *   
-	 *   	
-	 *   
-	 *   
-	 *   	
-	 *  
 	 */	
+	@RequestMapping(value="/home0101", method = RequestMethod.GET)
+	public String home0101(Model model) {
+		Member member = new Member();
+		member.setUserId("hong");
+		member.setPassword("4321");
+		member.setEmail("abc@naver.com");
+		member.setUserName("홍길순");
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, 2022);
+		cal.set(Calendar.MONTH, 10);
+		cal.set(Calendar.DAY_OF_MONTH, 7);
+		member.setDateOfBirth(cal.getTime());
+		model.addAttribute(member);
+		return "home/home0101";
+	}
+	
+	@RequestMapping(value="/home0102", method = RequestMethod.GET)
+	public String home0102(Model model) {
+		Member member = new Member();
+		String[] hobbyArray = {"Music", "Movie"};
+		member.setHobbyArray(hobbyArray);
+		
+		List<String> hobbyList = new ArrayList<String>();
+		hobbyList.add("Music");
+		hobbyList.add("Movie");
+		member.setHobbyList(hobbyList);
+		
+		model.addAttribute(member);
+		return "home/home0102";		
+	}
+	
+	@RequestMapping(value="/home0103", method = RequestMethod.GET)
+	public String home0103(Model model) {
+		Member member = new Member();
+		Address address = new Address();
+		address.setPostCode("090089");
+		address.setLocation("Daejeon");
+		member.setAddress(address);
+		
+		model.addAttribute(member);
+		return "home/home0103";				
+	}
+	
+	@RequestMapping(value="/home0104", method = RequestMethod.GET)
+	public String home0104(Model model) {
+		Map<String, String> memberMap = new HashMap<String, String>();
+		memberMap.put("userId", "cho");
+		memberMap.put("password", "4321");
+		memberMap.put("email", "mm123@naver.com");
+		memberMap.put("userName", "성히");
+				
+		//memberMap 이라는 키를 정확하게 명시했기 때문에, jsp페이지에서 명시된 키로 데이터를 출력할 수 있다
+		model.addAttribute("memberMap", memberMap);
+		return "home/home0104";		
+	}
+	
+	// 산술 연산자 사용 
+	@RequestMapping(value="/home0201", method = RequestMethod.GET)
+	public String home0201(Model model) {
+		int coin = 100;
+		model.addAttribute("coin", coin);
+		return "home/home0201";			
+	}
+	
+	// 비교연산자 사용
+	@ RequestMapping(value="/home0202", method = RequestMethod.GET)
+	public String home0202(Model model) {
+		int coin = 1000;
+		model.addAttribute("coin", coin);
+		return "home/home0202";
+	}
+	
+	@RequestMapping(value="/home0203", method = RequestMethod.GET)
+	public String home0203(Model model) {
+		String userId = "hongkd";
+		model.addAttribute("userId", userId);
+		return "home/home0203";
+	}
+	
+	// empty 연산자 사용 
+	@RequestMapping(value="/home0301", method = RequestMethod.GET)
+	public String home0301(Model model) {
+		return "home/home0301";
+	}
+	
+	// empty 연산자 사용 
+	@RequestMapping(value="/home0302", method = RequestMethod.GET)
+	public String home0302(Model model) {
+		Member member = new Member();
+		model.addAttribute("member", member);
+		return "home/home0301";
+	}
+	
+	//논리 연산자 사용 
+	@RequestMapping(value="/home0401", method = RequestMethod.GET)
+	public String home0401(Model model) {
+		int coin = 1000;
+		String userId = "hongkd";
+		
+		Member member = new Member();
+		model.addAttribute("coin", coin);
+		model.addAttribute("userId", userId);
+		model.addAttribute("member", member);
+		return "home/home0401";
+	}
+	
+	
 }

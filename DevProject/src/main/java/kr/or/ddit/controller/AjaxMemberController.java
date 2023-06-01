@@ -89,7 +89,8 @@ public class AjaxMemberController {
 		 log.info("userId : " + userId);
 		 log.info("member.userId : " + member.getUserId());
 		 log.info("member.password : " + member.getPassword());
-		 return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);		 		
+	
+	return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);		 		
 	}
 	
 	// 7) 객체 타입의 JSON 요청 데이터를 자바빈즈 요소를 가진 리스트 컬렉션 매개변수에 @RequestBody 어노테이션을 지정하여 처리한다

@@ -27,6 +27,7 @@ public class JSPFormPasswordTagController {
 		model.addAttribute("member", new Member());
 		return "form/password/registerForm01";
 	}
+
 	
 	@RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
 	public String registerForm02(Model model) {
