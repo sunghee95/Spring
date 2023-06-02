@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<h2>Register</h2>
+	<h2>register</h2>
 	<form:form modelAttribute="board" method="post" action="/crud/board/register">
 		<c:if test="${status eq 'u' }">
 			<input type="hidden" name="boardNo" value="${board.boardNo }"/>

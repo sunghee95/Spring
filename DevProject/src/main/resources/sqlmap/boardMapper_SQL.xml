@@ -46,6 +46,7 @@
   		delete from board where board_no = #{boardNo}
   	</delete>
   	
+  	
   	<select id="search" parameterType="board" resultType="board">
   		select 
   			board_no, title, content, writer, reg_date

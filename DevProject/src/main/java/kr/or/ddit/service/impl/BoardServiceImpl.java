@@ -33,8 +33,7 @@ public class BoardServiceImpl implements IBoardService {
 
 	@Override
 	public void update(Board board) {
-		mapper.update(board);
-		
+		mapper.update(board);		
 	}
 
 	@Override

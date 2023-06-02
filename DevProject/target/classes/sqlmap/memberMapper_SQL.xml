@@ -43,6 +43,7 @@
   		 )  		
   	</insert>
   	
+  	
   	<select id="list" resultType="memberVO">
   		select 
   			user_no, user_id, user_pw, user_name, reg_date
@@ -50,10 +51,29 @@
   		order by user_no desc
   	</select>
   	
+  	
   	<select id="read" parameterType="int" resultMap="memberMap">
   		select 
   			m.user_no, user_id, user_pw, user_name, reg_date, upd_date, auth
   		from member m left outer join member_auth a on(m.user_no = a.user_no)
   		where m.user_no = #{userNo}		
   	</select>
+  	
+  	
+  	<update id="modify" parameterType="memberVO">
+  		update member 
+  		set 
+  			user_name = #{userName}
+  		where user_no = #{userNo}
+  	</update>
+  	
+  	<delete id="deleteAuth" parameterType="int">
+  		delete from member_auth
+  		where user_no = #{userNo}
+  	</delete>
+  	
+  	<delete id="delete" parameterType="int">
+  		delete from member 
+  		where user_no = #{userNo}
+  	</delete>
   </mapper>
