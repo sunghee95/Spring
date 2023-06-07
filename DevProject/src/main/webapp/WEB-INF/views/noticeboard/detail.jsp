@@ -9,7 +9,7 @@
 				<div class="card card-primary">
 					<div class="card-header">
 						<h3 class="card-title">${notice.boTitle} </h3>
-						<div class="card-tools">${notice.boWriter } ${notice.boDate } ${notice.boHit }</div>
+						<div class="card-tools">${notice.boWriter } | ${notice.boDate } | ${notice.boHit }</div>
 					</div>
 					<form id="quickForm" novalidate="novalidate">
 						<div class="card-body">${notice.boContent }</div>
@@ -56,7 +56,7 @@ $(function(){
 	
 	// 목록 버튼 클릭시 이벤트
 	btnList.on("click", function(){
-		
+		location.href="/notice/list.do";
 	})
 	
 	// 수정 버튼 클릭시 이벤트
