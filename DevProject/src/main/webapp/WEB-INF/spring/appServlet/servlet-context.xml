@@ -37,13 +37,36 @@
 	</beans:bean>
 	<!-- Tiles 설정 끝  -->
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</beans:bean>
+	
+	
+	<!-- 인터셉터 설정  
+		- LoginInterceptor 클래스를 빈으로 정의한다 
+			설정한 클래스는 해당 위치에 존재해야함 ( 패키지 구조에 맞는)
+	-->
+	<beans:bean id="loginInterceptor" class="kr.or.ddit.controller.intercept.LoginInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/login1"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	<beans:bean id="accessLoggingInterceptor" class="kr.or.ddit.controller.intercept.AccessLoggingInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/*"/>
+			<exclude-mapping path="/resources/**"/>
+			<beans:ref bean="accessLoggingInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<context:component-scan base-package="kr.or.ddit.controller" />
+	
 	<!-- 
 		서블릿 표준용 MultipartResolver 스프링 빈으로 정의 
 		- StandardServletMultipartResolver 사용시 설정 
 			> Servlet 3.0의 Part를 이용한 MultipartFile 데이터 처리
 	 -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
-	</beans:bean>
 	
-	<context:component-scan base-package="kr.or.ddit" />
 </beans:beans>
