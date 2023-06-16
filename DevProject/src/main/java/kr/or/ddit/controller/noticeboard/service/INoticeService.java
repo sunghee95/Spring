@@ -24,7 +24,7 @@ public interface INoticeService {
 	public String idForgetProcess(DDITMemberVO member);
 	public String pwForgetProcess(DDITMemberVO member);
 	public NoticeFileVO noticeDownload(int fileNo);
-	public DDITMemberVO selectMember(DDITMemberVO sessionMember);
+	public DDITMemberVO selectMember(String memId);
 	public ServiceResult profileUpdate(HttpServletRequest req, DDITMemberVO memberVO);
 
 }
